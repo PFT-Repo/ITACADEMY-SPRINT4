@@ -2,7 +2,7 @@
 
 
 ##VER PAGINA DE TESTS
- <a href="./test-results.html">Ver Tests</a>
+ <a href="../test-results.html">Ver Tests</a>
 
 ## Introduction
 
