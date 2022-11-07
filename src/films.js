@@ -117,7 +117,6 @@ function hoursToMinutes(array) {
    return res;
   }*/
   array.forEach(element => {
-    result = [];
   console.log(element.duration);
    let h = hourToMin(getHours(element.duration));
    let min = getMinutes(element.duration);
