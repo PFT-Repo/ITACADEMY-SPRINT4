@@ -73,23 +73,32 @@ function moviesAverageByCategory(array,genre) {
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(array) {
- let result = [];
- 
+  const result = array.map(array => ({ 
+  title: array.title,
+  year: array.year,
+  director: array.director,
+  duration: array.duration,
+  genre: array.genre,
+  score: array.score}));;
+
  function getHours(dur){
   let index = 0;
   while(dur[index])
   {
-    console.log(dur.length);
     if (dur[index] == 'h'){
-      console.log('este es la cuantia de horas '+ dur.slice(0,index));
       return dur.slice(0,index);
+    }
+    if(index == dur.length)
+    {
+      let res = 0;
+      return res;
     }
     index++;
   }
  }
+
  function hourToMin(number){
   let new_hours= parseFloat(number*60);
-  console.log("nuevas horas a min = " + new_hours);
   return new_hours;
  }
  function getMinutes(dur){
@@ -98,41 +107,35 @@ function hoursToMinutes(array) {
   {
     if (dur[index] == ' ' && dur[index + 1] != ' '){
       let res = dur.slice(index + 1, dur.length - 3);
-      console.log('este es el cuantia de min '+ res);
       return parseInt(res);
+    }
+    if(index == 0)
+    {
+      let res = 0;
+      return res;
     }
     index--;
   }
  }
- /* function durationConvert(dur){
-    res = 0;
-    const [hours] = dur.split('h ');
-    const [h,minutes] = trydur.split(' ');
-    let new_minutes = parseInt(minutes.replace('min',''));
-    console.log(new_minutes);
-    let new_hours= parseFloat(hours*60);
-    console.log(new_hours);
-    res = new_hours + new_minutes;
-    console.log(res);
-   return res;
-  }*/
-  array.forEach(element => {
-  console.log(element.duration);
+  result.forEach(element => {
    let h = hourToMin(getHours(element.duration));
    let min = getMinutes(element.duration);
    let ui = 0 ;
    ui = h + min ;
    element.duration = ui;
-  console.log(element);   
   })
-  result = array;
   return result;
-
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(array,year) {
+    const moviesFromYear = array.filter(array => array.year == year);
+    moviesFromYear.sort(function(a, b){
+      return b.score - a.score;
+     });
+     let result = [...moviesFromYear]
+     return result.slice(0,1);
+    
 }
 
 
